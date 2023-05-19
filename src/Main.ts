@@ -1,5 +1,6 @@
 import { PrefixScan } from "stoneberry/scan";
-import { bufferI32 } from "thimbleberry";
+import { ShaderGroup, bufferI32, withBufferCopy } from "thimbleberry";
+import { resultTable } from "./resultTable.ts";
 
 main();
 
@@ -9,27 +10,44 @@ async function main(): Promise<void> {
   const srcData = [1, 2, 3, 4, 5, 6];
   const src = bufferI32(device, srcData);
 
+  // inclusive scan
   const prefixScan = new PrefixScan({ device, src });
   const inclusiveResult = await prefixScan.scan();
 
+  // exclusive scan
   prefixScan.exclusive = true;
   prefixScan.initialValue = 19;
   const exclusiveResult = await prefixScan.scan();
 
-  render(srcData, inclusiveResult, exclusiveResult);
+  // two shader sequence 
+  const doubleShaders = await multipleShaders(device, src);
+
+  resultTable([
+    { name: "source", data: srcData },
+    { name: "inclusive", data: inclusiveResult },
+    { name: "exclusive", data: exclusiveResult },
+    { name: "excl + incl", data: doubleShaders },
+  ]);
 }
 
-function render(src: number[], inclusive: number[], exclusive: number[]): void {
-  const app = document.querySelector("div#app")!;
-  app.innerHTML = `
-    <table>
-      <tr> <td style="width:5em">source</td> ${nums(src)} </tr>
-      <tr> <td>inclusive</td> ${nums(inclusive)} </tr>
-      <tr> <td>exclusive</td> ${nums(exclusive)} </tr>
-    </table>
-  `;
-}
+/** a sequence of two connected shaders 
+ * 
+ * (in this case both shaders are scans, but in real life scan would be connected to a different shader)
+*/
+async function multipleShaders(
+  device: GPUDevice,
+  src: GPUBuffer
+): Promise<number[]> {
+  const prefixScan = new PrefixScan({ device, src, exclusive: true, initialValue: 19 });
+  const otherShader = new PrefixScan({ device, src: () => prefixScan.result }); // note dynamic link to previous
 
-function nums(array: number[]): string {
-  return array.map((s) => `<td style="width:1.5em">${s}</td>`).join(" ");
+  // launch shaders
+  const group = new ShaderGroup(device, prefixScan, otherShader);
+  group.dispatch();
+
+  // collect results
+  const otherResult = await withBufferCopy(device, otherShader.result, "i32", (d) =>
+    d.slice()
+  );
+  return [...otherResult];
 }
