@@ -1,0 +1,17 @@
+{
+  "name": "stoneberry-example",
+  "scripts": {
+    "dev": "vite dev",
+    "prod": "vite build"
+  },
+  "dependencies": {
+    "stoneberry": "^0.1.1",
+    "thimbleberry": "^0.1.9"
+  },
+  "devDependencies": {
+    "@webgpu/types": "^0.1.32",
+    "esbuild": "^0.17.19",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.8"
+  }
+}

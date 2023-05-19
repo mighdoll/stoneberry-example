@@ -1,0 +1,18 @@
+# dependency packages
+node_modules
+
+# bundled release 
+dist
+
+# macOS
+.DS_Store
+
+# vi temp files
+*.swp
+
+# IDE
+.vscode/
+
+# yalc
+.yalc
+yalc.lock
