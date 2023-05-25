@@ -5,8 +5,8 @@
     "prod": "vite build"
   },
   "dependencies": {
-    "stoneberry": "^0.1.1",
-    "thimbleberry": "^0.1.9"
+    "stoneberry": "^0.1.4",
+    "thimbleberry": "^0.1.10"
   },
   "devDependencies": {
     "@webgpu/types": "^0.1.32",

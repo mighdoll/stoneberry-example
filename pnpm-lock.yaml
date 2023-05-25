@@ -2,11 +2,11 @@ lockfileVersion: '6.0'
 
 dependencies:
   stoneberry:
-    specifier: ^0.1.1
-    version: 0.1.1
+    specifier: ^0.1.4
+    version: 0.1.4
   thimbleberry:
-    specifier: ^0.1.9
-    version: 0.1.9
+    specifier: ^0.1.10
+    version: 0.1.10
 
 devDependencies:
   '@webgpu/types':
@@ -230,8 +230,8 @@ packages:
     resolution: {integrity: sha512-5uAnNf2gQSm3gM7z6Lx079H1/MuDQQI+5aYfwyDFGR9nHZj8yblLY/6aOJVWp+NcBwXVBKuWQ28qWHD9F1qN1w==}
     dev: false
 
-  /@reactively/decorate@0.0.3:
-    resolution: {integrity: sha512-UWggN98HUMqiPiT2q4SHPe+lISpZKR8vssAm+bRoZbSO0yLA2/K2iHmUIzkbH5LTz96M+2Afs/u6Apz0CDQkLQ==}
+  /@reactively/decorate@0.0.4:
+    resolution: {integrity: sha512-hiGsUjns2n1xCBcq6yTEal5TrL1ATcWfHMmbE0M3OxFvEt+WyVGmWwamXlwXUgODpYDya4SCoormGCTjLNr7HA==}
     dependencies:
       '@reactively/core': 0.0.8
     dev: false
@@ -311,8 +311,8 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /rollup@3.22.0:
-    resolution: {integrity: sha512-imsigcWor5Y/dC0rz2q0bBt9PabcL3TORry2hAa6O6BuMvY71bqHyfReAz5qyAqiQATD1m70qdntqBfBQjVWpQ==}
+  /rollup@3.23.0:
+    resolution: {integrity: sha512-h31UlwEi7FHihLe1zbk+3Q7z1k/84rb9BSwmBSr/XjOCEaBJ2YyedQDuM0t/kfOS0IxM+vk1/zI9XxYj9V+NJQ==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -328,20 +328,20 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /stoneberry@0.1.1:
-    resolution: {integrity: sha512-noTNpK0BkgzULpz29KE2hWgMPQpo5cVlWoqbZkLiKg8fziXO7kw2gApqgdw7M/kCyD6qC8TibCKAZzytTWEZlQ==}
+  /stoneberry@0.1.4:
+    resolution: {integrity: sha512-nTzHZYq62CUyMvIZq7b8c00e+AyJ2rlR/8RD9p/Fzg+mhJB+TUdJ6yxFDh+LXYIzXDkbt1Y8pb9aiQpI1CIXMA==}
     dependencies:
       '@reactively/core': 0.0.8
-      '@reactively/decorate': 0.0.3
-      thimbleberry: 0.1.9
+      '@reactively/decorate': 0.0.4
+      thimbleberry: 0.1.10
     dev: false
 
-  /thimbleberry@0.1.9:
-    resolution: {integrity: sha512-M1VIvxQ1nmBrtRsHGx6oq4HgDvfZSVFue8OaqTFbymZIgzKoqwPgFjnpU3SdCOVh2kJQonYSeW8aknOvgDT/fg==}
+  /thimbleberry@0.1.10:
+    resolution: {integrity: sha512-9V8J6hbwCKH1o3Hp8FCQVTgPGIPufxUEVes1r8Xk86CANV6s665pAfbCMom0pj38IZoiX4HYCluOUv/MY+No1g==}
     dependencies:
       '@petamoriken/float16': 3.8.0
       '@reactively/core': 0.0.8
-      '@reactively/decorate': 0.0.3
+      '@reactively/decorate': 0.0.4
       berry-pretty: 0.0.3
       fast-deep-equal: 3.1.3
       sortablejs: 1.15.0
@@ -380,7 +380,7 @@ packages:
     dependencies:
       esbuild: 0.17.19
       postcss: 8.4.23
-      rollup: 3.22.0
+      rollup: 3.23.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
