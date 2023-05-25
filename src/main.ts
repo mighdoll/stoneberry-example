@@ -1,12 +1,11 @@
 import { PrefixScan } from "stoneberry/scan";
-import { ShaderGroup, bufferI32, withBufferCopy } from "thimbleberry";
+import { ShaderGroup, bufferI32, labeledGpuDevice, withBufferCopy } from "thimbleberry";
 import { resultTable } from "./resultTable.ts";
 
 main();
 
 async function main(): Promise<void> {
-  const adapter = await navigator.gpu.requestAdapter();
-  const device = await adapter!.requestDevice();
+  const device = await labeledGpuDevice();
   const srcData = [1, 2, 3, 4, 5, 6];
   const src = bufferI32(device, srcData);
 
